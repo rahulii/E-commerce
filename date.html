@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p id="demo"></p>
+
+<script>
+
+var dateObj = new Date();
+var day = dateObj.getUTCDate() + 5;
+var monthnames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+var month= monthnames[dateObj.getUTCMonth()];
+
+
+//newdate = year + "/" + month + "/" +day;
+newdate = "Estimated Delivery Date within India: " + day + "th " + month;
+document.getElementById("demo").innerHTML = newdate;
+</script>
+
+</body>
+</html>

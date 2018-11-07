@@ -1,0 +1,23 @@
+<?php 
+	session_start();
+	require('connect.php');
+	
+	$code = $_SESSION["pcode"];
+    $queryi = "INSERT INTO `addtocart` (id) VALUES ('$code')";
+	$resulti = mysqli_query($connection, $queryi);
+	
+	$sql = "SELECT * FROM `products` WHERE pid='$code'";
+	$result = mysqli_query($connection, $sql);
+	$row = mysqli_fetch_array($result);
+	
+	$name = $row['pname'];
+	$cost = $row['pcost'];
+	$img = $row['pimg'];
+	$qty = 1;
+	$total = $cost * $qty;
+	$insertcart = "INSERT INTO `cart` (pname,pimg,pcost,qty,total) VALUES ('$name','$img',$cost,'$qty','$total')";
+	$insterresult = mysqli_query($connection, $insertcart);
+	
+	//echo '<img src="img/'.$row['pimg'].'">'
+	echo "<script>window.history.go(-1);</script>";	
+?>
